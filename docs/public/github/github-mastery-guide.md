@@ -17,6 +17,9 @@
 ### 主要目標
 
 #### 1. GitHub中心の開発エコシステム構築 🌐
+
+<div style="background-color: white; padding: 10px; border-radius: 8px;">
+
 ```mermaid
 graph TD
     A[GitHub<br/>開発の中心] --> B[コード管理]
@@ -49,6 +52,8 @@ graph TD
     style J fill:#fff3e0
     style N fill:#f3e5f5
 ```
+
+</div>
 
 #### 2. 統合連携による効率化実現 ⚡
 - **GitHub ↔ Slack**: 開発進捗の自動通知・チーム連携強化
@@ -357,7 +362,10 @@ graph TD
 ### � フェーズ3: AI・開発支援ツール活用（3-4週間）
 **優先度: 最高** - 最新AI技術を活用した開発効率化
 
-#### 3.1 GitHub Copilot 完全活用 �
+#### 3.1 GitHub Copilot 完全活用 🤖
+
+<div style="background-color: white; padding: 10px; border-radius: 8px;">
+
 ```mermaid
 mindmap
   root((GitHub Copilot))
@@ -377,6 +385,8 @@ mindmap
       "効果測定"
       "研修プログラム"
 ```
+
+</div>
 
 **GitHub機能習得目標**:
 - [ ] **GitHub Copilot**: 基本操作・設定最適化・プロンプト技術・効果測定
@@ -622,6 +632,9 @@ gantt
 ## 📊 学習進捗トラッキング
 
 ### 進捗管理システム
+
+<div style="background-color: white; padding: 10px; border-radius: 8px;">
+
 ```mermaid
 quadrantChart
     title "GitHub スキル習得マップ"
@@ -642,6 +655,8 @@ quadrantChart
     "GitHub CLI": [0.3, 0.7]
     "Copilot活用": [0.6, 0.9]
 ```
+
+</div>
 
 ### 学習成果測定指標
 
