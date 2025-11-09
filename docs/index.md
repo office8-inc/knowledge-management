@@ -12,6 +12,7 @@
 
 #### 🤖 AI・未来技術
 - [AIの未来予測](./public/ai-future/ai-robot-future-prediction.md) - AI搭載型ロボットの実現予測と分析
+- [AI・ロボット職業置き換え予測レポート](./public/ai-future/ai-robot-job-replacement-timeline.md) - 時系列での職業置き換え詳細予測・創作分野参入障壁崩壊分析
 
 #### 💻 技術関連
 - *準備中*
