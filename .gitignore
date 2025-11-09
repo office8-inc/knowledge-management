@@ -1,0 +1,22 @@
+# VS Code設定
+.vscode/
+
+# プライベート・個人情報
+docs/private/
+
+# 下書き・未完成ドキュメント
+docs/draft/
+
+# 一時ファイル
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# ログファイル
+*.log
+
+# 個人設定・機密情報
+.env
+.env.local
+config/personal/
