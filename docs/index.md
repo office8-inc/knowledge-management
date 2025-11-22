@@ -1,6 +1,6 @@
 # ドキュメント管理インデックス 📚
 
-*最終更新: 2025年11月9日*
+*最終更新: 2025年11月20日*
 
 ## 📂 現在のドキュメント一覧
 
@@ -9,6 +9,7 @@
 #### 📱 GitHub関連
 - [GitHubフル活用術](./public/github/github-mastery-guide.md) - GitHub機能の包括的活用ガイド
 - [GitHub公開戦略](./public/github/github-publishing-strategy.md) - リポジトリ公開・運用戦略
+- [GitHub Copilot Agents機能ガイド](./public/github/github-copilot-agents-capabilities.md) - Agentsのリポジトリ操作能力完全解説
 
 #### 🤖 AI・未来技術
 - [AIの未来予測](./public/ai-future/ai-robot-future-prediction.md) - AI搭載型ロボットの実現予測と分析
