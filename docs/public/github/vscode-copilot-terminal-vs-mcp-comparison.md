@@ -417,4 +417,14 @@ graph TD
 
 ---
 
+## 📺 参考動画
+
+MCPについてさらに詳しく学びたい方におすすめの動画です。
+
+**【MCP入門】Model Context Protocolの基礎と実践**
+- 🎬 [https://youtu.be/7fxguUgpIPs](https://youtu.be/7fxguUgpIPs)
+- MCPの概要から実践的な活用方法まで、分かりやすく解説されています
+
+---
+
 *このガイドが、あなたの開発作業をより効率的にする一助となれば幸いです。* 🎉
