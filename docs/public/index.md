@@ -1,9 +1,10 @@
 # 公開ドキュメントインデックス 🌍
 
-*最終更新: 2025-12-13*
+*最終更新: 2026-05-30*
 
 ## 📋 目次
 - AI・未来 (ai-future)
+- AI業務自動化サービス (ai-automation-service)
 - Development
 - GitHub
 
@@ -15,6 +16,11 @@
 | IT革命 vs AI革命 インパクト比較分析 💥 | [docs/public/ai-future/it-vs-ai-revolution-impact-analysis.md](docs/public/ai-future/it-vs-ai-revolution-impact-analysis.md) | 2025-11-22 |
 | AI時代の生存戦略：ITエンジニアの未来と行動指針 🤖 | [docs/public/ai-future/ai-robot-future-prediction.md](docs/public/ai-future/ai-robot-future-prediction.md) | 2025-11-09 |
 | AI・ロボット技術による職業置き換え予測レポート 🤖🦾 | [docs/public/ai-future/ai-robot-job-replacement-timeline.md](docs/public/ai-future/ai-robot-job-replacement-timeline.md) | 2025-11-09 |
+
+## AI業務自動化サービス (ai-automation-service)
+| タイトル | パス | 最終更新日 |
+| --- | --- | --- |
+| shinjin.ai — 要件定義書 | [docs/public/ai-automation-service/requirements.md](docs/public/ai-automation-service/requirements.md) | 2026-05-30 |
 
 ## Development
 | タイトル | パス | 最終更新日 |
@@ -34,4 +40,5 @@
 *公開用一覧。更新時はタイトルとリンクを同期してください。*
 
 ## 🆕 更新メモ
+- 2026-05-30: shinjin.ai 要件定義書を公開インデックスに追加
 - 2025-12-13: インデックスを公開/非公開で分離
