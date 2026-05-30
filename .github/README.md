@@ -13,6 +13,7 @@
 ```
 docs/
 ├── public/
+│   ├── ai-automation-service/
 │   ├── ai-future/
 │   ├── development/
 │   └── github/
@@ -27,6 +28,7 @@ docs/
 - 公開情報は [docs/public/](docs/public/) 配下に格納。
 - 個人情報・機密は [docs/private/](docs/private/) 配下に限定し、`.gitignore` で Git 追跡外。
 - 下書きや検討中は draft 配下に置き、公開前に内容を精査。
+- GitHub Pages は `docs/public` だけを artifact として公開する。公開前提でない要件定義や調査メモは `docs/private` に置く。
 
 ## 🛠️ 作成・運用メモ
 - マークダウンで構造化し、必要に応じてMermaidで図解。

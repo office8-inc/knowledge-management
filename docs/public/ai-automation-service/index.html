@@ -1,0 +1,1559 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>shinjin.ai | 中小企業向けAI業務自動化サービス</title>
+  <meta name="description" content="中小企業の経理・総務・管理部門に、休まず働く新人AIを配属。PDF、メール、Excel、既存システムをつなぎ、1業務から安全に自動化します。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%230f766e'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5a6675;
+      --line: #dbe3ec;
+      --paper: #ffffff;
+      --soft: #f5f8fb;
+      --teal: #0f766e;
+      --teal-dark: #115e59;
+      --coral: #d35f3f;
+      --amber: #b7791f;
+      --green: #2f855a;
+      --shadow: 0 18px 48px rgba(23, 32, 42, 0.12);
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", system-ui, sans-serif;
+      line-height: 1.75;
+      background: var(--paper);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(219, 227, 236, 0.86);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: 64px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand span {
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 800;
+      line-height: 1.2;
+      box-shadow: 0 8px 22px rgba(15, 118, 110, 0.24);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink);
+      border-color: var(--line);
+      box-shadow: none;
+    }
+
+    .hero {
+      min-height: calc(88svh - 64px);
+      display: grid;
+      align-items: center;
+      background-image: url("./assets/shinjin-ai-hero.png");
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 86px;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 10px;
+      border: 1px solid rgba(15, 118, 110, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--teal-dark);
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(3rem, 9vw, 6.8rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .hero-lead {
+      max-width: 520px;
+      margin-bottom: 28px;
+      color: #26313f;
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .proof-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .proof-line li {
+      padding: 6px 10px;
+      border: 1px solid rgba(219, 227, 236, 0.9);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .band {
+      padding: 76px 0;
+    }
+
+    .band.soft {
+      background: var(--soft);
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      margin-bottom: 8px;
+      color: var(--coral);
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .section-head p,
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid.four {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tile {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(23, 32, 42, 0.06);
+    }
+
+    .tile h3 {
+      margin-bottom: 8px;
+      font-size: 1.14rem;
+      line-height: 1.35;
+    }
+
+    .tile p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .metric {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1;
+      font-weight: 900;
+      color: var(--teal);
+    }
+
+    .metric-label {
+      margin-top: 8px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .problem-solution {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 30px;
+    }
+
+    .panel.problem {
+      background: #fff7f4;
+      border-right: 1px solid var(--line);
+    }
+
+    .panel.solution {
+      background: #f2fbf9;
+    }
+
+    .panel h3 {
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .mark {
+      display: inline-grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: var(--coral);
+      color: #fff;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .solution .mark {
+      background: var(--teal);
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 12px;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+
+    .flow-node {
+      min-height: 170px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .flow-node strong {
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    .flow-node span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .flow-symbol {
+      display: grid;
+      place-items: center;
+      color: var(--teal);
+      font-size: 1.8rem;
+      font-weight: 900;
+    }
+
+    .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 14px;
+    }
+
+    .mini-tags span {
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .section-visual {
+      margin-top: 28px;
+    }
+
+    .image-frame {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 14px 34px rgba(23, 32, 42, 0.1);
+    }
+
+    .image-frame.section-visual {
+      margin-top: 34px;
+    }
+
+    .image-frame img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .image-frame.tall img {
+      aspect-ratio: 16 / 10;
+    }
+
+    .image-frame.wide img {
+      aspect-ratio: 4 / 2;
+      object-position: center;
+    }
+
+    .cost-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .cost-layout > *,
+    .deliverables > *,
+    .offer > *,
+    .grid > * {
+      min-width: 0;
+    }
+
+    .stat-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .stat-pill {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 14px;
+    }
+
+    .stat-pill strong {
+      display: block;
+      color: var(--teal-dark);
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .stat-pill span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .table-card {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(23, 32, 42, 0.06);
+    }
+
+    .comparison-table {
+      width: 100%;
+      min-width: 660px;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .comparison-table th {
+      background: #f2fbf9;
+      color: var(--teal-dark);
+      font-size: 0.82rem;
+      text-align: left;
+    }
+
+    .comparison-table th:first-child,
+    .comparison-table td:first-child {
+      width: 128px;
+      min-width: 128px;
+      white-space: nowrap;
+      word-break: keep-all;
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .comparison-table .num {
+      color: var(--ink);
+      font-weight: 900;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .comparison-table .saving {
+      color: var(--coral);
+    }
+
+    .source-note {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .cost-detail {
+      margin-top: 18px;
+    }
+
+    .offer {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .price-box {
+      border: 1px solid rgba(15, 118, 110, 0.28);
+      border-radius: 8px;
+      background: #f2fbf9;
+      padding: 28px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.22);
+      font-weight: 800;
+    }
+
+    .price-row:last-child {
+      border-bottom: 0;
+    }
+
+    .price-row span:last-child {
+      color: var(--teal-dark);
+      text-align: right;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .step {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 18px;
+      min-height: 180px;
+    }
+
+    .step-num {
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .quote-band {
+      background: var(--ink);
+      color: #fff;
+      padding: 74px 0;
+    }
+
+    .quote {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3.4rem);
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .quote small {
+      display: block;
+      margin-top: 18px;
+      color: #b8c5d3;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .evidence-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .evidence-item {
+      border-left: 4px solid var(--teal);
+      background: var(--paper);
+      padding: 18px;
+    }
+
+    .evidence-item:nth-child(2) {
+      border-left-color: var(--coral);
+    }
+
+    .evidence-item:nth-child(3) {
+      border-left-color: var(--amber);
+    }
+
+    .evidence-item:nth-child(4) {
+      border-left-color: var(--green);
+    }
+
+    .evidence-item strong {
+      display: block;
+      font-size: 1.6rem;
+      line-height: 1.1;
+    }
+
+    .evidence-item span {
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .demo-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .detail-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .detail-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 10px;
+      border-radius: 8px;
+      background: var(--teal);
+    }
+
+    .usecase-card {
+      border-top: 4px solid var(--teal);
+    }
+
+    .usecase-card:nth-child(2) {
+      border-top-color: var(--coral);
+    }
+
+    .usecase-card:nth-child(3) {
+      border-top-color: var(--amber);
+    }
+
+    .usecase-card:nth-child(4) {
+      border-top-color: var(--green);
+    }
+
+    .deliverables {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .stacked {
+      display: grid;
+      gap: 14px;
+    }
+
+    .small-heading {
+      margin-bottom: 10px;
+      color: var(--teal-dark);
+      font-size: 0.92rem;
+      font-weight: 900;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-list details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .faq-list summary {
+      cursor: pointer;
+      padding: 16px 18px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .faq-list p {
+      margin: 0;
+      padding: 0 18px 18px;
+      color: var(--muted);
+    }
+
+    .faq-side {
+      display: grid;
+      gap: 14px;
+    }
+
+    .demo-row {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 18px;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+    }
+
+    .demo-row:focus-within {
+      outline: 3px solid rgba(15, 118, 110, 0.2);
+      outline-offset: 2px;
+    }
+
+    .rank {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .demo-row strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--teal-dark);
+    }
+
+    .demo-row p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .demo-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .demo-meta span {
+      padding: 3px 8px;
+      border-radius: 8px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .demo-toolbar p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .demo-toolbar .button {
+      min-height: 38px;
+      padding: 8px 12px;
+      box-shadow: none;
+    }
+
+    .cta {
+      border: 1px solid rgba(15, 118, 110, 0.28);
+      border-radius: 8px;
+      background: #f2fbf9;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 8px;
+    }
+
+    .cta p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 920px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        background-position: 40% center;
+      }
+
+      .hero-inner {
+        padding: 64px 0 62px;
+      }
+
+      .hero-copy {
+        max-width: 560px;
+      }
+
+      .grid.three,
+      .grid.two,
+      .grid.four,
+      .offer,
+      .timeline,
+      .evidence-strip,
+      .workflow,
+      .problem-solution,
+      .deliverables,
+      .cost-layout,
+      .stat-pills,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .panel.problem {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .flow-symbol {
+        min-height: 28px;
+        transform: rotate(90deg);
+      }
+
+      .demo-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .hero-inner,
+      .wrap {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .hero {
+        background-color: rgba(255, 255, 255, 0.2);
+        background-blend-mode: screen;
+        background-position: 30% center;
+      }
+
+      .hero-copy {
+        max-width: 94%;
+      }
+
+      .image-frame.wide img {
+        aspect-ratio: 16 / 10;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .band {
+        padding: 54px 0;
+      }
+
+      .tile,
+      .panel,
+      .price-box,
+      .step,
+      .demo-row,
+      .cta {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top">shinjin.ai <span>AI業務自動化</span></a>
+      <div class="nav-links">
+        <a href="#value">提供価値</a>
+        <a href="#target">対象</a>
+        <a href="#workflow">自動化の流れ</a>
+        <a href="#cost">費用比較</a>
+        <a href="#evidence">実装力</a>
+        <a href="#offer">料金</a>
+        <a class="button" href="#contact">無料相談へ</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="shinjin.ai">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">社長〜！今年の新人はAIにしていいですか？</div>
+          <h1>shinjin.ai</h1>
+          <p class="hero-lead">中小企業の経理・総務・管理部門に、休まず働く「新人AI」を配属する。転記、確認、メール、PDF、Excelを1業務ずつ安全に自動化します。</p>
+          <div class="hero-actions">
+            <a class="button" href="#contact">自動化できる業務を相談する</a>
+            <a class="button secondary" href="#evidence">実装力を見る</a>
+          </div>
+          <ul class="proof-line">
+            <li>初期構築1人月100万円〜</li>
+            <li>1業務を1ヶ月で構築</li>
+            <li>人間確認を残す安全設計</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="value">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">POSITIONING</p>
+          <h2>AI導入ではなく、業務が回る仕組みを納品する</h2>
+          <p>汎用SaaSや研修では埋まらない、現場固有の例外処理まで見る。ヒアリング、設計、実装、導入、保守を横原聖八が一気通貫で担う直契約サービスです。</p>
+        </div>
+        <div class="grid three">
+          <article class="tile">
+            <h3>1業務だけ選ぶ</h3>
+            <p>請求書、メール分類、CSV取込、月次集計など、最初は小さく始めて成果を見せます。</p>
+          </article>
+          <article class="tile">
+            <h3>既存環境を活かす</h3>
+            <p>Excel、Web管理画面、SaaS、既存DBを読み解き、APIやブラウザ自動化でつなぎます。</p>
+          </article>
+          <article class="tile">
+            <h3>例外は人が見る</h3>
+            <p>AI判定を鵜呑みにせず、低信頼・失敗・重要操作はチャット通知や承認で止めます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band soft">
+      <div class="wrap">
+        <div class="problem-solution">
+          <div class="panel problem">
+            <h3>現場に残る負担</h3>
+            <ul class="check-list">
+              <li><span class="mark">!</span><span>担当者しか分からないExcelや手順が多い</span></li>
+              <li><span class="mark">!</span><span>請求書、注文書、メール、PDFの転記が毎月発生する</span></li>
+              <li><span class="mark">!</span><span>SaaSを入れても現場固有の例外に合わない</span></li>
+              <li><span class="mark">!</span><span>採用、教育、引き継ぎ、退職リスクが重い</span></li>
+            </ul>
+          </div>
+          <div class="panel solution">
+            <h3>新人AIの役割</h3>
+            <ul class="check-list">
+              <li><span class="mark">✓</span><span>入力、確認、分類、通知、レポート化を自動化</span></li>
+              <li><span class="mark">✓</span><span>既存の業務システム、メール、DB、チャット通知をつなぐ</span></li>
+              <li><span class="mark">✓</span><span>判断が必要な箇所だけ人間確認に回す</span></li>
+              <li><span class="mark">✓</span><span>保守で業務変更やAI精度改善を継続する</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="target">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">TARGET</p>
+          <h2>向いている会社と、最初は慎重にしたい相談</h2>
+          <p>新人AIは、現場の手順がある程度見えていて、毎月同じような確認・転記・集計が発生する会社ほど相性が良いです。</p>
+        </div>
+        <div class="grid two">
+          <article class="tile">
+            <h3>向いている会社</h3>
+            <ul class="detail-list">
+              <li>経理・総務・管理部門に手作業が多い</li>
+              <li>Excel、PDF、メール、既存システムの転記が多い</li>
+              <li>新人1人分の採用費・人件費・教育コストを置き換える発想がある</li>
+              <li>追加IT予算ではなく、人件費の振替として初期構築1人月100万円を判断できる</li>
+              <li>まず1業務だけ小さく試したい</li>
+            </ul>
+          </article>
+          <article class="tile">
+            <h3>最初は慎重に扱う相談</h3>
+            <ul class="detail-list">
+              <li>医療・法務・与信など、AI判断ミスが重大事故になる業務</li>
+              <li>電話対応など、リアルタイム対外対応が中心の業務</li>
+              <li>現場の手順がまだ固まっていない業務</li>
+              <li>全社DXを一気に進めたい大型案件</li>
+              <li>人間確認を完全になくすことが前提の業務</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="workflow">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">WORKFLOW</p>
+          <h2>メール・PDF・DBを、業務フローとしてつなぎ直す</h2>
+          <p>AIは単体で使わず、既存データ、ルール判定、人間確認、通知、ログまで含めて設計します。</p>
+        </div>
+        <div class="workflow" aria-label="AI業務自動化の流れ">
+          <div class="flow-node">
+            <strong>入力</strong>
+            <span>請求書PDF、メール、Excel、Webフォーム、既存DB</span>
+            <div class="mini-tags"><span>PDF</span><span>CSV</span><span>Mail</span></div>
+          </div>
+          <div class="flow-symbol">→</div>
+          <div class="flow-node">
+            <strong>整理</strong>
+            <span>AI抽出、ルール判定、重複排除、データ検証</span>
+            <div class="mini-tags"><span>LLM</span><span>Rules</span><span>Validate</span></div>
+          </div>
+          <div class="flow-symbol">→</div>
+          <div class="flow-node">
+            <strong>確認</strong>
+            <span>低信頼、例外、破壊的操作だけ人間承認へ</span>
+            <div class="mini-tags"><span>Chat</span><span>Approve</span><span>Audit</span></div>
+          </div>
+          <div class="flow-symbol">→</div>
+          <div class="flow-node">
+            <strong>反映</strong>
+            <span>DB更新、SaaS連携、レポート生成、担当者通知</span>
+            <div class="mini-tags"><span>API</span><span>DB</span><span>Report</span></div>
+          </div>
+        </div>
+        <figure class="image-frame section-visual tall">
+          <img src="./assets/shinjin-workflow-automation.png" alt="PDF、メール、Excel、DBを新人AIが取り込み、確認済みデータとして出力する業務自動化イメージ">
+        </figure>
+      </div>
+    </section>
+
+    <section class="band soft" id="usecases">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">USE CASES</p>
+          <h2>部門ごとに、刺さる業務は少し違う</h2>
+          <p>最初の相談では、毎月時間を取られている作業を1つ選ぶところから始めます。経理、営業事務、総務、管理部門の定型処理ほど成果を見せやすいです。</p>
+        </div>
+        <div class="grid four">
+          <article class="tile usecase-card">
+            <h3>経理</h3>
+            <ul class="detail-list">
+              <li>請求書PDF処理</li>
+              <li>経費精算チェック</li>
+              <li>入金消込補助</li>
+              <li>月次資料作成</li>
+            </ul>
+          </article>
+          <article class="tile usecase-card">
+            <h3>営業事務</h3>
+            <ul class="detail-list">
+              <li>見積書の下書き作成</li>
+              <li>受発注入力</li>
+              <li>顧客情報更新</li>
+              <li>問い合わせ分類と担当通知</li>
+            </ul>
+          </article>
+          <article class="tile usecase-card">
+            <h3>総務</h3>
+            <ul class="detail-list">
+              <li>勤怠集計</li>
+              <li>契約書管理</li>
+              <li>社内通知配信</li>
+              <li>社内FAQ / RAG検索</li>
+            </ul>
+          </article>
+          <article class="tile usecase-card">
+            <h3>管理部門</h3>
+            <ul class="detail-list">
+              <li>CSV / Excel取込と検証</li>
+              <li>部門別レポート集約</li>
+              <li>マスタ情報の差分チェック</li>
+              <li>例外・未対応の一覧化</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-band">
+      <div class="wrap">
+        <blockquote class="quote">
+          その作業、AIに任せる前に、業務ごと作り直します。
+          <small>既存のExcel、メール、社内システム、業務データを読み解き、人間確認を残した安全な自動化にします。</small>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">DELIVERABLES</p>
+          <h2>1ヶ月で納品するものを、最初から明確にする</h2>
+          <p>初期構築1人月100万円は、相談だけではなく「動くもの」「確認できるもの」「保守できるもの」までを含める前提です。</p>
+        </div>
+        <div class="deliverables">
+          <article class="tile">
+            <h3>初期構築で作るもの</h3>
+            <ul class="detail-list">
+              <li>対象業務の処理フロー整理</li>
+              <li>入力データの取込・検証処理</li>
+              <li>AI抽出・分類・要約・判定の実装</li>
+              <li>人間確認用の画面または通知</li>
+              <li>出力データ、レポート、既存システム連携</li>
+              <li>操作手順と保守観点のドキュメント</li>
+            </ul>
+          </article>
+          <div class="stacked">
+            <article class="tile">
+              <p class="small-heading">安全設計</p>
+              <p>AI判定をそのまま信じず、ルール判定、データ検証、低信頼時の停止、人間承認、ログ確認を組み合わせます。</p>
+            </article>
+            <article class="tile">
+              <p class="small-heading">月額保守</p>
+              <p>AIは日進月歩です。納品後も、業務変更、障害対応、AIチューニング、ログ確認、例外パターン追加を継続して、新人AIを育てます。</p>
+            </article>
+            <article class="tile">
+              <p class="small-heading">拡張方針</p>
+              <p>最初の1業務で成果が出たら、同じ入力・通知・確認の仕組みを横展開し、2人目・3人目の新人AIにつなげます。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band soft" id="cost">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">PRICE LOGIC</p>
+          <h2>「IT投資」ではなく、新人1人分の人件費枠で比べる</h2>
+          <p>大阪の新卒オフィスワーカーを前提に、月給だけでなく賞与、残業代、交通費、会社負担、採用教育、OJT、管理工数、備品/SaaSまで含めて比較します。新人AIは、定型業務を担う人件費枠の振替として見せます。夜間や休日の処理にも回せるので、遅刻・欠勤・教育の個人差・早期退職・引き継ぎ漏れといった新人採用時の不確実性も抑えられます。</p>
+        </div>
+        <div class="cost-layout">
+          <figure class="image-frame wide">
+            <img src="./assets/shinjin-cost-comparison.png" alt="新人さんの採用教育コストと新人AIの自動化コストを比べるイメージ">
+          </figure>
+          <div>
+            <div class="stat-pills" aria-label="費用比較の要点">
+              <div class="stat-pill"><strong>25.2万円</strong><span>大阪府 新卒事務の初任給目安</span></div>
+              <div class="stat-pill"><strong>月15万円</strong><span>初期100万円時の保守費</span></div>
+              <div class="stat-pill"><strong>280万円</strong><span>新人AI 1年目の年額目安</span></div>
+              <div class="stat-pill"><strong>24時/365日</strong><span>夜間・休日の定型処理にも対応</span></div>
+            </div>
+            <div class="table-card">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>比較対象</th>
+                    <th>1年目</th>
+                    <th>2年目</th>
+                    <th>計算の考え方</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>新人さん</strong></td>
+                    <td class="num">約560万円</td>
+                    <td class="num">約530万円</td>
+                    <td>新卒初任給を基準に、賞与、残業代、交通費、会社負担、採用費、教育/OJT、管理工数、備品/SaaSまで含める</td>
+                  </tr>
+                  <tr>
+                    <td><strong>新人AI</strong></td>
+                    <td class="num">280万円</td>
+                    <td class="num">180万円</td>
+                    <td>初期構築100万円 + 月額保守15万円 × 12ヶ月。2年目は同一業務の保守継続のみ</td>
+                  </tr>
+                  <tr>
+                    <td><strong>差額目安</strong></td>
+                    <td class="num saving">約280万円削減</td>
+                    <td class="num saving">約350万円削減</td>
+                    <td>AIに有利な定型業務を置き換えられる場合の営業用概算。退職リスク、属人化、ミス削減、24時間365日稼働も合わせて説明する</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="source-note">大阪労働局の新規学卒者初任給情報、社会保険料率、採用教育コストをもとにしたLP用概算です。実際の見積では対象業務と現場の人件費前提に合わせて調整します。</p>
+          </div>
+        </div>
+        <div class="grid two cost-detail">
+          <article class="tile">
+            <h3>比較の前提</h3>
+            <ul class="detail-list">
+              <li>比較対象は大阪府の新卒事務職に固定する</li>
+              <li>新人さん側は月給、賞与、残業代、交通費、採用費、教育/OJT、備品/SaaSまで含める</li>
+              <li>会社負担は社会保険、交通費、福利厚生の端数込みで給与・賞与・交通費等の20%として置く</li>
+              <li>新人AIは初期構築100万円、保守は初期構築の15%で試算し、2年目は保守のみで見る</li>
+              <li>24時間365日稼働でき、欠勤・教育の個人差・早期退職・引き継ぎ漏れの不確実性を減らせる</li>
+            </ul>
+          </article>
+          <article class="tile">
+            <h3>今回の比較条件</h3>
+            <ul class="detail-list">
+              <li>比較対象は新卒。中途、派遣、パート、既存社員とは比べない</li>
+              <li>新人さんに実際かかる費用は全部含める</li>
+              <li>対象業務はAIに有利めに置く。件数が多く、繰り返しが多く、夜間・休日にも処理できる業務を選ぶ</li>
+              <li>2年目は保守のみ。追加業務の初期構築は別見積にする</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="evidence">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">CAPABILITY</p>
+          <h2>業務理解から実装・保守まで、一人でつなぐ</h2>
+          <p>AIツールの紹介だけで終わらせず、現場の入力、確認、例外、通知、出力までを見て、実際に動く仕組みに落とし込みます。</p>
+        </div>
+        <div class="evidence-strip">
+          <div class="evidence-item"><strong>20年+</strong><span>業務Web・システム開発</span></div>
+          <div class="evidence-item"><strong>1業務</strong><span>小さく始めて成果確認</span></div>
+          <div class="evidence-item"><strong>AI/RPA</strong><span>判断補助と操作自動化</span></div>
+          <div class="evidence-item"><strong>API/DB</strong><span>既存データとシステム連携</span></div>
+          <div class="evidence-item"><strong>保守</strong><span>業務変更と例外追加に対応</span></div>
+        </div>
+        <div class="grid three" style="margin-top: 22px;">
+          <article class="tile">
+            <h3>フルスタック実装</h3>
+            <p>Web画面、API、DB、CSV、PDF、メール、通知まで、業務に必要な部品をまとめて設計・実装します。</p>
+          </article>
+          <article class="tile">
+            <h3>安全なAI活用</h3>
+            <p>AI判定をそのまま通さず、低信頼や例外は人間確認へ回します。ログと確認手順を残して運用します。</p>
+          </article>
+          <article class="tile">
+            <h3>作って終わりにしない</h3>
+            <p>業務変更、AI精度、例外パターン、障害対応を継続して見直し、新人AIを現場に合わせて育てます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="offer">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">OFFER</p>
+          <h2>初回は、1業務を1ヶ月で自動化する</h2>
+          <p>大きな全社DXではなく、見積・請求・メール・CSV・月次集計など、効果が見える1業務から始めます。</p>
+        </div>
+        <div class="offer">
+          <div class="grid two">
+            <article class="tile">
+              <h3>新人AIお試し配属</h3>
+              <p>対象業務を1つ選び、入力、判断、通知、出力までを動く形にします。人間確認を残して導入し、精度を見ながら自動化範囲を広げます。</p>
+            </article>
+            <article class="tile">
+              <h3>月額保守</h3>
+              <p>業務変更、障害対応、AIチューニング、ログ確認、例外パターン追加を継続。AIは日進月歩なので、運用保守で育て続けることが重要です。作って終わりにしません。</p>
+            </article>
+          </div>
+          <aside class="price-box" aria-label="料金">
+            <div class="price-row"><span>初回相談</span><span>無料</span></div>
+            <div class="price-row"><span>初期構築</span><span>1人月100万円</span></div>
+            <div class="price-row"><span>期間</span><span>1業務 / 約1ヶ月</span></div>
+            <div class="price-row"><span>月額保守</span><span>初期構築の15%</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="band soft">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">START CASES</p>
+          <h2>初回に向いている業務例</h2>
+          <p>最初は、件数が多く、手順がある程度決まっていて、例外だけ人間確認へ回せる業務から始めます。</p>
+        </div>
+        <div class="demo-list" id="demo-example-list" aria-label="初回に向いている業務例">
+          <article class="demo-row">
+            <span class="rank">1</span>
+            <div>
+              <strong>請求書PDF処理</strong>
+              <p>PDFから取引先、金額、日付を読み取り、会計入力用CSVと確認画面を生成。ROIを説明しやすい初回デモ。</p>
+              <div class="demo-meta"><span>経理</span><span>PDF</span><span>確認画面</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">2</span>
+            <div>
+              <strong>メール分類と担当通知</strong>
+              <p>問い合わせメールを分類し、返信案と担当部門を作成。低信頼だけ人間確認に回す。</p>
+              <div class="demo-meta"><span>営業事務</span><span>メール</span><span>通知</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">3</span>
+            <div>
+              <strong>月次レポート自動生成</strong>
+              <p>スプレッドシートやDBから売上・作業時間・未対応を集計し、チャットやPDFで共有する。</p>
+              <div class="demo-meta"><span>管理部門</span><span>月次</span><span>レポート</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">4</span>
+            <div>
+              <strong>Web管理画面操作</strong>
+              <p>既存の管理画面をブラウザ自動操作し、フォーム入力、ステータス更新、結果確認を自動化する。</p>
+              <div class="demo-meta"><span>既存システム</span><span>画面操作</span><span>RPA</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">5</span>
+            <div>
+              <strong>社内FAQ / RAG検索</strong>
+              <p>社内規程、過去対応、手順書を検索可能にし、質問への回答案と参照元を出す。</p>
+              <div class="demo-meta"><span>総務</span><span>RAG</span><span>ナレッジ</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">6</span>
+            <div>
+              <strong>CSV / Excel取込と検証</strong>
+              <p>取込、重複チェック、形式チェック、差分確認、不備通知までをまとめて自動化する。</p>
+              <div class="demo-meta"><span>管理部門</span><span>CSV</span><span>Excel</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">7</span>
+            <div>
+              <strong>見積書作成</strong>
+              <p>入力情報から見積書の下書き、確認項目、送付前チェックリストを生成する。</p>
+              <div class="demo-meta"><span>営業事務</span><span>帳票</span><span>下書き</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">8</span>
+            <div>
+              <strong>受発注入力</strong>
+              <p>メールやフォームの内容から受発注データを整理し、既存システムへの反映候補を作る。</p>
+              <div class="demo-meta"><span>営業事務</span><span>メール</span><span>DB</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">9</span>
+            <div>
+              <strong>顧客情報更新</strong>
+              <p>メール、Webフォーム、既存DBの情報を照合し、変更候補と不一致を見える化する。</p>
+              <div class="demo-meta"><span>管理部門</span><span>照合</span><span>マスタ</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">10</span>
+            <div>
+              <strong>経費精算チェック</strong>
+              <p>金額、日付、添付、勘定科目候補を確認し、不備や例外だけ人間へ回す。</p>
+              <div class="demo-meta"><span>経理</span><span>領収書</span><span>例外検知</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">11</span>
+            <div>
+              <strong>入金消込補助</strong>
+              <p>入金データと請求データを照合し、候補、一致、不一致、要確認を分類する。</p>
+              <div class="demo-meta"><span>経理</span><span>照合</span><span>消込</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">12</span>
+            <div>
+              <strong>勤怠集計</strong>
+              <p>勤怠データを集計し、未入力、異常値、締め漏れ、確認依頼を通知する。</p>
+              <div class="demo-meta"><span>総務</span><span>勤怠</span><span>通知</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">13</span>
+            <div>
+              <strong>契約書管理 / 差分チェック</strong>
+              <p>契約書PDFと既存データを照合し、差分、不足、期限、更新漏れを通知する。</p>
+              <div class="demo-meta"><span>総務</span><span>契約書</span><span>PDF</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">14</span>
+            <div>
+              <strong>社内通知配信</strong>
+              <p>対象者、期限、既読/未対応を管理し、チャットやメールへ自動でリマインドする。</p>
+              <div class="demo-meta"><span>総務</span><span>通知</span><span>リマインド</span></div>
+            </div>
+          </article>
+          <article class="demo-row">
+            <span class="rank">15</span>
+            <div>
+              <strong>音声・画面から修正指示レポート</strong>
+              <p>通話音声とWeb画面から修正指示を抽出し、スクショ付きの実行可能な指示に整理する。</p>
+              <div class="demo-meta"><span>制作/サポート</span><span>音声</span><span>Vision</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">PROCESS</p>
+          <h2>相談から保守までの流れ</h2>
+        </div>
+        <div class="timeline">
+          <article class="step">
+            <span class="step-num">1</span>
+            <h3>無料相談</h3>
+            <p>困っている手作業を1つ聞き、対象業務を絞る。</p>
+          </article>
+          <article class="step">
+            <span class="step-num">2</span>
+            <h3>現場ヒアリング</h3>
+            <p>入力、処理、出力、例外対応を確認する。</p>
+          </article>
+          <article class="step">
+            <span class="step-num">3</span>
+            <h3>初期構築</h3>
+            <p>AI、RPA、API、Webシステムを組み合わせて実装。</p>
+          </article>
+          <article class="step">
+            <span class="step-num">4</span>
+            <h3>導入</h3>
+            <p>現地またはリモートで動作確認と担当者レクチャー。</p>
+          </article>
+          <article class="step">
+            <span class="step-num">5</span>
+            <h3>保守改善</h3>
+            <p>ログ、例外、AI精度、業務変更を継続的に見る。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band soft" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">FAQ</p>
+          <h2>問い合わせ前の不安を減らす</h2>
+          <p>完璧な要件定義は不要です。まずは、毎月時間を取られている手作業や、担当者に依存している確認作業を1つ教えてください。</p>
+        </div>
+        <div class="grid two">
+          <div class="faq-list">
+            <details open>
+              <summary>何から相談すればいいですか？</summary>
+              <p>毎月時間を取られている手作業を1つ教えてください。請求書、メール、Excel、PDF、転記、確認作業のどれかで十分です。</p>
+            </details>
+            <details>
+              <summary>既存システムを変えずにできますか？</summary>
+              <p>API連携、CSV取込、ブラウザ自動操作、確認画面の追加など、既存環境を活かす方法から検討します。</p>
+            </details>
+            <details>
+              <summary>AIが間違えたらどうしますか？</summary>
+              <p>最初から完全自動にせず、低信頼・例外・重要操作は人間確認に回します。ログを見ながら例外パターンを追加します。</p>
+            </details>
+            <details>
+              <summary>小さく試せますか？</summary>
+              <p>はい。最初は1業務・1ヶ月の初期構築から始めます。効果が出たら、周辺業務へ広げる方針です。</p>
+            </details>
+          </div>
+          <div class="faq-side">
+            <figure class="image-frame tall">
+              <img src="./assets/shinjin-consultation.png" alt="大阪のオフィスで業務フローを確認しながら新人AI導入を相談するイメージ">
+            </figure>
+            <article class="tile">
+              <h3>相談前にあると良い情報</h3>
+              <ul class="detail-list">
+                <li>対象業務の手順書、チェックリスト、現場メモ</li>
+                <li>入力に使うPDF、Excel、CSV、メールのサンプル</li>
+                <li>出力したい帳票、CSV、チャット通知、レポートの形</li>
+                <li>月間件数、1件あたりの作業時間、ミスが起きやすい箇所</li>
+                <li>絶対に自動実行せず、人間確認を残したい操作</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="contact">
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <p class="kicker">CALL TO ACTION</p>
+            <h2>まずは、月に何時間かかっている作業を1つ教えてください。</h2>
+            <p>対象業務がまだ曖昧でも構いません。PDF、Excel、メール、転記、確認作業のどれか1つから整理します。</p>
+          </div>
+          <a class="button" href="mailto:office8.inc@gmail.com?subject=shinjin.ai%20%E7%84%A1%E6%96%99%E7%9B%B8%E8%AB%87">無料相談する</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">shinjin.ai / AI業務自動化サービス / オフィセイト</div>
+  </footer>
+</body>
+</html>

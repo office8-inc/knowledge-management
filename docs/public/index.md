@@ -1,6 +1,6 @@
 # 公開ドキュメントインデックス 🌍
 
-*最終更新: 2026-05-30*
+*最終更新: 2026-05-31*
 
 ## 📋 目次
 - AI・未来 (ai-future)
@@ -20,7 +20,7 @@
 ## AI業務自動化サービス (ai-automation-service)
 | タイトル | パス | 最終更新日 |
 | --- | --- | --- |
-| shinjin.ai — 要件定義書 | [docs/public/ai-automation-service/requirements.md](docs/public/ai-automation-service/requirements.md) | 2026-05-30 |
+| shinjin.ai — 公開LP | [docs/public/ai-automation-service/index.html](docs/public/ai-automation-service/index.html) | 2026-05-31 |
 
 ## Development
 | タイトル | パス | 最終更新日 |
@@ -40,5 +40,6 @@
 *公開用一覧。更新時はタイトルとリンクを同期してください。*
 
 ## 🆕 更新メモ
-- 2026-05-30: shinjin.ai 要件定義書を公開インデックスに追加
+- 2026-05-31: shinjin.ai 公開LPをGitHub Pages用HTMLとして追加
+- 2026-05-30: shinjin.ai 要件定義書を作成
 - 2025-12-13: インデックスを公開/非公開で分離
