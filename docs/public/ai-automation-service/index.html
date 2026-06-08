@@ -773,6 +773,104 @@
       margin-top: 18px;
     }
 
+    .sim {
+      border: 1px solid rgba(15, 118, 110, 0.28);
+      border-radius: 8px;
+      background: #f2fbf9;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .sim-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 24px;
+      margin-bottom: 22px;
+    }
+
+    .sim-field label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 0.96rem;
+    }
+
+    .sim-field label b {
+      color: var(--teal-dark);
+      font-size: 1.15rem;
+      white-space: nowrap;
+    }
+
+    .sim-field input[type="range"] {
+      width: 100%;
+      accent-color: var(--teal);
+    }
+
+    .sim-results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .sim-card {
+      border: 1px solid var(--line);
+      border-left-width: 4px;
+      border-radius: 8px;
+      background: #fff;
+      padding: 16px;
+    }
+
+    .sim-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .sim-card strong {
+      display: block;
+      margin: 6px 0 2px;
+      font-size: 1.5rem;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .sim-card small {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .sim-card.human {
+      border-left-color: var(--coral);
+    }
+
+    .sim-card.ai {
+      border-left-color: var(--teal);
+    }
+
+    .sim-card.ai strong {
+      color: var(--teal-dark);
+    }
+
+    .sim-card.save {
+      border-left-color: var(--green);
+    }
+
+    .sim-card.save strong {
+      color: var(--green);
+    }
+
+    .sim-note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
     .offer {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -1103,6 +1201,8 @@
       .deliverables,
       .cost-layout,
       .stat-pills,
+      .sim-controls,
+      .sim-results,
       .cta {
         grid-template-columns: 1fr;
       }
@@ -1224,9 +1324,9 @@
             <a class="button secondary" href="#cost">費用感を見る</a>
           </div>
           <ul class="proof-line">
-            <li>初期構築1人月100万円〜</li>
+            <li>初期構築1業務100万円〜</li>
+            <li>月額は成果報酬型（出た成果だけ）</li>
             <li>1業務を約1ヶ月で構築</li>
-            <li>複数人の定型作業にも効く</li>
             <li>人間確認を残す安全設計</li>
           </ul>
         </div>
@@ -1373,53 +1473,44 @@
       <div class="wrap">
         <div class="section-head">
           <p class="kicker">PRICE LOGIC</p>
-          <h2>「IT投資」ではなく、新人1人分の人件費枠で比べる</h2>
-          <p>大阪の新卒オフィスワーカーを前提に、月給だけでなく賞与、残業代、交通費、会社負担、採用教育、OJT、管理工数、備品/SaaSまで含めて比較します。新人AIは、定型業務を担う人件費枠の振替として見せます。夜間や休日の処理にも回せるので、遅刻・欠勤・教育の個人差・早期退職・引き継ぎ漏れといった新人採用時の不確実性も抑えられます。</p>
+          <h2>「IT投資」ではなく、いま人がかけている人件費と直接比べる</h2>
+          <p>新人AIは成果報酬型（出た成果＝処理した件数だけ課金）。だから、その業務に今かかっている人件費と1円単位で並べられます。下のシミュレーターに、月の件数と1件あたりの作業時間を入れてください。多くの業務で人件費の半額以下が狙えます。夜間・休日も動くので、遅刻・欠勤・早期退職・引き継ぎ漏れといった採用リスクも同時に減らせます。</p>
         </div>
         <div class="cost-layout">
           <figure class="image-frame wide">
             <img src="./assets/shinjin-cost-comparison.webp" width="1439" height="810" loading="lazy" decoding="async" alt="新人さんの採用教育コストと新人AIの自動化コストを比べるイメージ">
           </figure>
           <div>
-            <div class="stat-pills" aria-label="費用比較の要点">
-              <div class="stat-pill"><strong>25.2万円</strong><span>大阪府 新卒事務の初任給目安</span></div>
-              <div class="stat-pill"><strong>月15万円</strong><span>初期100万円時の保守費</span></div>
-              <div class="stat-pill"><strong>280万円</strong><span>新人AI 1年目の年額目安</span></div>
-              <div class="stat-pill"><strong>24時/365日</strong><span>夜間・休日の定型処理にも対応</span></div>
+            <div class="sim" aria-label="人件費シミュレーション">
+              <div class="sim-controls">
+                <div class="sim-field">
+                  <label for="simVol">月間の処理件数 <b><span id="simVolOut">2,000</span> 件</b></label>
+                  <input type="range" id="simVol" min="100" max="10000" step="100" value="2000">
+                </div>
+                <div class="sim-field">
+                  <label for="simMin">1件あたりの人手作業 <b><span id="simMinOut">5</span> 分</b></label>
+                  <input type="range" id="simMin" min="2" max="20" step="1" value="5">
+                </div>
+              </div>
+              <div class="sim-results">
+                <div class="sim-card human">
+                  <span>いま人がやっているコスト</span>
+                  <strong id="simHumanMo">¥517,000</strong>
+                  <small id="simHumanYr">年 約¥6,200,000</small>
+                </div>
+                <div class="sim-card ai">
+                  <span>新人AI（成果報酬型）の目安</span>
+                  <strong id="simAiMo">¥258,000 以下</strong>
+                  <small>出た成果＝処理件数に応じて課金</small>
+                </div>
+                <div class="sim-card save">
+                  <span>削減見込み</span>
+                  <strong id="simSaveMo">¥258,000/月</strong>
+                  <small id="simSaveYr">年 約¥3,100,000・50%以上カット</small>
+                </div>
+              </div>
+              <p class="sim-note">完全コスト時給¥3,100（大阪・新卒事務 約560万円/年 ÷ 約1,800時間で試算）で計算。新人AIは成果報酬型（処理件数×単価・上限あり）で、多くの場合この目安よりさらに安くなります。正確な単価は無料の業務診断で算出します。</p>
             </div>
-            <div class="table-card">
-              <table class="comparison-table">
-                <thead>
-                  <tr>
-                    <th>比較対象</th>
-                    <th>1年目</th>
-                    <th>2年目</th>
-                    <th>計算の考え方</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>新人さん</strong></td>
-                    <td class="num">約560万円</td>
-                    <td class="num">約530万円</td>
-                    <td>新卒初任給を基準に、賞与、残業代、交通費、会社負担、採用費、教育/OJT、管理工数、備品/SaaSまで含める</td>
-                  </tr>
-                  <tr>
-                    <td><strong>新人AI</strong></td>
-                    <td class="num">280万円</td>
-                    <td class="num">180万円</td>
-                    <td>初期構築100万円 + 月額保守15万円 × 12ヶ月。2年目は同一業務の保守継続のみ</td>
-                  </tr>
-                  <tr>
-                    <td><strong>差額目安</strong></td>
-                    <td class="num saving">約280万円削減</td>
-                    <td class="num saving">約350万円削減</td>
-                    <td>AIに有利な定型業務を置き換えられる場合の営業用概算。退職リスク、属人化、ミス削減、24時間365日稼働も合わせて説明する</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="source-note">大阪労働局の新規学卒者初任給情報、社会保険料率、採用教育コストをもとにしたLP用概算です。実際の見積では対象業務と現場の人件費前提に合わせて調整します。</p>
           </div>
         </div>
         <div class="grid two cost-detail">
@@ -1429,7 +1520,7 @@
               <li>比較対象は大阪府の新卒事務職に固定する</li>
               <li>新人さん側は月給、賞与、残業代、交通費、採用費、教育/OJT、備品/SaaSまで含める</li>
               <li>会社負担は社会保険、交通費、福利厚生の端数込みで給与・賞与・交通費等の20%として置く</li>
-              <li>新人AIは初期構築100万円、保守は初期構築の15%で試算し、2年目は保守のみで見る</li>
+              <li>新人AIは初期構築100万円。月額は固定保守ではなく成果報酬型（処理した件数×単価）で、出た成果の分だけ課金する</li>
               <li>24時間365日稼働でき、欠勤・教育の個人差・早期退職・引き継ぎ漏れの不確実性を減らせる</li>
             </ul>
           </article>
@@ -1439,7 +1530,7 @@
               <li>比較対象は新卒。中途、派遣、パート、既存社員とは比べない</li>
               <li>新人さんに実際かかる費用は全部含める</li>
               <li>対象業務はAIに有利めに置く。件数が多く、繰り返しが多く、夜間・休日にも処理できる業務を選ぶ</li>
-              <li>2年目は保守のみ。追加業務の初期構築は別見積にする</li>
+              <li>月額は処理件数に連動。閑散月は下がり、繁忙月も上限を設ける。追加業務の初期構築は別見積にする</li>
             </ul>
           </article>
         </div>
@@ -1570,15 +1661,17 @@
               <p>対象業務を1つ選び、入力、判断、通知、出力までを動く形にします。人間確認を残して導入し、精度を見ながら自動化範囲を広げます。</p>
             </article>
             <article class="tile">
-              <h3>月額保守</h3>
-              <p>業務変更、障害対応、AIチューニング、ログ確認、例外パターン追加を継続。AIは日進月歩なので、運用保守で育て続けることが重要です。作って終わりにしません。</p>
+              <h3>月額（成果報酬型で運用）</h3>
+              <p>固定費ではなく、処理した成果（件数）に応じた従量課金です。業務変更、障害対応、AIチューニング、例外パターン追加を継続し、新人AIを育て続けます。閑散月は下がり、繁忙月も上限を設けるので、人件費より重くなりません。</p>
             </article>
           </div>
           <aside class="price-box" aria-label="料金">
             <div class="price-row"><span>初回業務診断</span><span>無料</span></div>
-            <div class="price-row"><span>初期構築</span><span>1人月100万円</span></div>
+            <div class="price-row"><span>初期構築</span><span>1業務 100万円</span></div>
             <div class="price-row"><span>期間</span><span>1業務 / 約1ヶ月</span></div>
-            <div class="price-row"><span>月額保守</span><span>初期構築の15%</span></div>
+            <div class="price-row"><span>月額</span><span>成果報酬型（出来高）</span></div>
+            <div class="price-row"><span>課金の単位</span><span>処理件数 × 単価・上限あり</span></div>
+            <div class="price-row"><span>月額の目安</span><span>人件費の半額以下</span></div>
           </aside>
         </div>
       </div>
@@ -1820,8 +1913,8 @@
               <p>AI判定をそのまま信じず、ルール判定、データ検証、低信頼時の停止、人間承認、ログ確認を組み合わせます。</p>
             </article>
             <article class="tile">
-              <p class="small-heading">月額保守</p>
-              <p>AIは日進月歩です。納品後も、業務変更、障害対応、AIチューニング、ログ確認、例外パターン追加を継続して、新人AIを育てます。</p>
+              <p class="small-heading">月額（成果報酬型）</p>
+              <p>AIは日進月歩です。納品後も、業務変更、障害対応、AIチューニング、例外パターン追加を継続して新人AIを育てます。費用は固定ではなく、処理した成果（件数）に応じた従量課金です。</p>
             </article>
             <article class="tile">
               <p class="small-heading">拡張方針</p>
@@ -1961,5 +2054,40 @@
   <footer>
     <div class="wrap">shinjin.ai / AI業務自動化サービス / オフィセイト</div>
   </footer>
+
+  <script>
+    (function () {
+      var RATE = 3100;
+      var vol = document.getElementById('simVol');
+      var min = document.getElementById('simMin');
+      if (!vol || !min) return;
+      var volOut = document.getElementById('simVolOut');
+      var minOut = document.getElementById('simMinOut');
+      var humanMo = document.getElementById('simHumanMo');
+      var humanYr = document.getElementById('simHumanYr');
+      var aiMo = document.getElementById('simAiMo');
+      var saveMo = document.getElementById('simSaveMo');
+      var saveYr = document.getElementById('simSaveYr');
+      var yen = function (n) { return '¥' + Math.round(n).toLocaleString('ja-JP'); };
+      var round1k = function (n) { return Math.round(n / 1000) * 1000; };
+      function update() {
+        var v = Number(vol.value);
+        var m = Number(min.value);
+        var human = v * (m / 60) * RATE;
+        var ai = human * 0.5;
+        var save = human - ai;
+        volOut.textContent = v.toLocaleString('ja-JP');
+        minOut.textContent = m;
+        humanMo.textContent = yen(round1k(human));
+        humanYr.textContent = '年 約' + yen(round1k(human * 12));
+        aiMo.textContent = yen(round1k(ai)) + ' 以下';
+        saveMo.textContent = yen(round1k(save)) + '/月';
+        saveYr.textContent = '年 約' + yen(round1k(save * 12)) + '・50%以上カット';
+      }
+      vol.addEventListener('input', update);
+      min.addEventListener('input', update);
+      update();
+    })();
+  </script>
 </body>
 </html>
