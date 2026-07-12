@@ -13,7 +13,6 @@
 ```
 docs/
 ├── public/
-│   ├── ai-automation-service/
 │   ├── ai-future/
 │   ├── development/
 │   └── github/
